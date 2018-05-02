@@ -1,0 +1,15 @@
+# Created by .ignore support plugin (hsz.mobi)
+
+.idea/
+*.iml
+target/
+shippable/
+.classpath
+.project
+.settings/
+*.DS_Store
+.DS_Store
+src/.DS_Store
+src/test/.DS_Store
+src/test/resources/.DS_Store
+src/test/resources/OutputGeneratedFiles/

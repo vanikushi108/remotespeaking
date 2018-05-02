@@ -1,0 +1,43 @@
+{
+  "capabilities": {
+    "project": "Example",
+    "build": "Java Selenide Local",
+    "browserstack.debug": true,
+    "browserstack.local": true,
+    "acceptSslCerts": true
+  },
+
+  "environments": {
+    "ie": {
+      "browser": "IE",
+      "browser_version": "9.0",
+      "os": "Windows",
+      "os_version": "7"
+    },
+    "iphone": {
+      "browserName": "iPhone",
+      "platform": "MAC",
+      "device": "iPhone 6S"
+    },
+    "safari": {
+      "os": "OS X",
+      "os_version": "Sierra",
+      "browser": "Safari",
+      "browser_version": "10.1"
+    },
+    "chrome": {
+      "os": "Windows",
+      "os_version": "10",
+      "browser": "Chrome",
+      "browser_version": "62.0",
+      "resolution": "1024x768"
+    },
+    "firefox": {
+      "os": "Windows",
+      "os_version": "10",
+      "browser": "Firefox",
+      "browser_version": "56.0",
+      "resolution": "1024x768"
+    }
+  }
+}

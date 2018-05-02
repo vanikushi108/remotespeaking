@@ -1,0 +1,14 @@
+language: java
+jdk: oraclejdk8
+
+env:
+  global:
+  # TAAS_ADMIN_USERNAME and TAAS_ADMIN_PASSWORD
+  - secure: WdqDfWAWbd/JHSfWI9pHgRkM1LIwxVgl3sRXLplAljUYqzLto5jYI1RazGk6LxdvIuHlu+lmXklKkEGfWy0XQ0zgj1GDsrsfnm57PSBbc9TA09A9JGuSGm7vTSDMEwVY7oUFkrsxS40OkIvkzkbcmde2cH+481cumTyElfZM7NEdkL8Q1U2HiNBsj+3WeoPbP2iKnpbulF1rCw+l5Ni3pdl4UcPZapZ497kKRyT5x8uodq5dFdE+UIZTPYFCtOx544e2FST7MRWcXyJ1Hk5QaQl9FS7xPoFUgznLprN6j8f5EXKVIoR1oZ1A/Zdxz9Q2zsQc6J6kDKHg1KT5hvrB/g==
+  # SAUCE_USERNAME and SAUCE_ACCESS_KEY
+  - secure: mo86W+tSo/Q9o/M81O9LQML2bIpxCriFmBysQTTRzwjmBE0dDHAKeGoT9vmjfnZp2IJeIcuNU/PP9IsMMsIJOHO/cVeuj3qLPy8Z6Tt6oAUUVk90V1+rm1PxUEjN9f7JW2y/pxBofMPkuns+N/c1EiffWOMYHyIeXch9aVlwyeOuhUG9ZfLbA0bKhaGZnGNqc+88HSQBqwRxJX0/6Du2TGXWduJwegU7NqNkDQZTooxGM2/1TyulLM5JYNFC+z6RDjvsFQnlu7pyIURKoBMaxaCs8Sev41tr1Pue35WhbEDwU6b8ptowhrWONGB4zHxHXaTWhljAi4cuLRA6ZyWNIA==
+
+build:
+ ci:
+ - mkdir -p shippable/testresults/dev
+ - shippable_retry mvn clean -Drun_type=saucelabs -DSAUCE_USERNAME=$SAUCE_USERNAME -DSAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY -Dcucumber.options="--tags @regression --format junit:shippable/testresults/cucumber-results.xml" -Denvironment.name=stable test
