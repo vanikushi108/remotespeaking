@@ -9,7 +9,7 @@ Feature: Interlocutor test
     And I click on Proceed button
     And I click on Examiner type Interlocutor
     And I click on Proceed button
-#    And I click on Proceed button
-#    And I click on exam type A2 Key
-#    And I click on Proceed button
-#    And I sleep for 10 seconds
+    And I click on Proceed button
+    And I click on exam type A2 Key
+    And I click on Proceed button
+    And I sleep for 5 seconds

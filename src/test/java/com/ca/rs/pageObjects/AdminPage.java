@@ -72,7 +72,12 @@ public class AdminPage extends AbstractSeleniumSteps {
     }
 
     public void clickOnExamTypeA2Key() throws Exception {
-        waitUntilVisible(webDriver(), ExamTypeA2Key);
-        ExamTypeA2Key.click();
+        Thread.sleep(1000);
+        try {
+            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", ExamTypeA2Key);
+        } catch (Exception ex) {
+            new Actions(webDriver()).moveToElement(ExamTypeA2Key).perform();
+            ExamTypeA2Key.click();
+        }
     }
 }
