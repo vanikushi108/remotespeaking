@@ -20,7 +20,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.*;
  */
 public class SeleniumUtils {
 
-  private static int NORMAL_TIMEOUT = 60;
+  private static int NORMAL_TIMEOUT = 20;
   private static int LONG_TIMEOUT = 180;
 
   public static void waitForPresence(WebDriver webDriver, By locator) {
