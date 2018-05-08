@@ -23,7 +23,7 @@ public class AdminPage extends AbstractSeleniumSteps {
     @FindBy(css = ".dialog-button.dialog-button-update")
     private WebElement CloneButton;
 
-    @FindBy(css = "input[placeholder='Examiner no.']")
+    @FindBy(css = "input")
     private WebElement ExaminerNo;
 
     @FindBy(css = "button[type='button'] > span:nth-child(1)")
