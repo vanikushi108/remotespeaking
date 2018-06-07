@@ -4,6 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
 import com.ibatis.common.resources.Resources;
 import com.ca.rs.SeleniumExternalDriversConstants;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -117,7 +118,10 @@ class ChromeDriverBuilder {
      * @return this builder
      */
     public ChromeDriverBuilder noSandbox() {
-        return options(options -> options.addArguments("no-sandbox"));
+        return options(options -> options.addArguments("allow-file-access-from-files")
+                                         //.addArguments("use-fake-device-for-media-stream")
+                                         .addArguments("use-fake-ui-for-media-stream")
+        );
     }
 
     /**

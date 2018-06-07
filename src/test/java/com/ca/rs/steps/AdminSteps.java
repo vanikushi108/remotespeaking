@@ -8,6 +8,7 @@ import com.ca.rs.pageObjects.Common;
 import com.ca.rs.pageObjects.AdminPage;
 import com.ca.rs.pageObjects.LoginPage;
 import com.google.common.util.concurrent.Uninterruptibles;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -83,5 +84,30 @@ public class AdminSteps extends AbstractSeleniumSteps {
     @And("^I click on exam type A2 Key$")
     public void iClickOnExamTypeA2Key() throws Throwable {
         adminPage.clickOnExamTypeA2Key();
+    }
+
+    @And("^I allow camera notification$")
+    public void iAllowCameraNotifications() throws Throwable {
+
+    }
+
+    @And("^I click on Record button$")
+    public void iClickOnRecordButton() throws Throwable {
+        adminPage.clickOnRecordButton();
+    }
+
+    @And("^I enter user name as \"([^\"]*)\"$")
+    public void iEnterUserNameAs(String txtUserName) throws Throwable {
+        adminPage.enterUserName(txtUserName);
+    }
+
+    @And("^I enter password as \"([^\"]*)\"$")
+    public void iEnterPasswordAs(String txtPassword) throws Throwable {
+        adminPage.enterPassword(txtPassword);
+    }
+
+    @And("^I click on Login button$")
+    public void iClickOnLoginButton() throws Throwable {
+        adminPage.clickOnLoginButton();
     }
 }

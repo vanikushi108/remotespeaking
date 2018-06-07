@@ -25,7 +25,7 @@ public class Common extends AbstractSeleniumSteps {
 
     public void navigateToURL(String url) {
         webDriver().navigate().to(url);
-        waitForPageLoad(webDriver());
+        //waitForPageLoad(webDriver());
     }
 
     public void scrollAndWait(WebElement element) {
