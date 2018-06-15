@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
@@ -61,6 +62,23 @@ public class AdminPage extends AbstractSeleniumSteps {
 
     @FindBy(css = ".auth0-lock-submit")
     private WebElement LoginButton;
+
+    @FindBy(css = ".mark-button:nth-child(1)")
+    private WebElement selectCanditate1;
+
+//    @FindBy(css = "button[class=mark-button][data-candidate=1]")
+//    private WebElement selectCanditate1;
+
+    @FindBy(css = ".mark-button:nth-child(2)")
+    private WebElement selectCanditate2;
+
+
+    @FindBy(css = "#confirm-yes")
+    private WebElement ClickOk;
+
+    @FindBy(css = "#button-submit")
+    private WebElement SubmitButton;
+
 
     public void enterExaminerNo(int ExaminerNumber) throws Exception {
         waitUntilVisible(webDriver(), ExaminerNo);
@@ -131,4 +149,77 @@ public class AdminPage extends AbstractSeleniumSteps {
         waitUntilVisible(webDriver(), LoginButton);
         LoginButton.click();
     }
+
+    public void selectCandidateOneMarks(String marks) throws Exception {
+
+        customWait(webDriver(), selectCanditate1);
+        try {
+            Thread.sleep(1000);
+            scrollIntoView(webDriver(), selectCanditate1);
+            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", selectCanditate1);
+        } catch (Exception ex) {
+            new Actions(webDriver()).moveToElement(selectCanditate1).perform();
+            selectCanditate1.click();
+        }
+
+        By locator = By.cssSelector("ul>li:nth-child(4)");
+
+        WebElement element = webDriver().findElement(locator);
+
+        try {
+            Thread.sleep(1000);
+            scrollIntoView(webDriver(), element);
+            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", element);
+        } catch (Exception ex) {
+            new Actions(webDriver()).moveToElement(element).perform();
+            element.click();
+        }
+        Thread.sleep(1000);
+    }
+
+    public void selectCandidateTwoMarks(String marks) throws Exception {
+
+        customWait(webDriver(), selectCanditate2);
+        try {
+            Thread.sleep(1000);
+            scrollIntoView(webDriver(), selectCanditate2);
+            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", selectCanditate2);
+        } catch (Exception ex) {
+            new Actions(webDriver()).moveToElement(selectCanditate2).perform();
+            selectCanditate2.click();
+        }
+
+        Thread.sleep(1000);
+        By locator = By.cssSelector("ul>li:nth-child(4)");
+
+        WebElement element = webDriver().findElement(locator);
+
+        try {
+            Thread.sleep(1000);
+            scrollIntoView(webDriver(), element);
+            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", element);
+        } catch (Exception ex) {
+            new Actions(webDriver()).moveToElement(element).perform();
+            element.click();
+        }
+        Thread.sleep(1000);
+    }
+
+    public void clickOk() throws Exception {
+        try {
+            Thread.sleep(1000);
+            webDriver().switchTo().alert().accept();
+            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", ClickOk);
+        } catch (Exception ex) {
+            new Actions(webDriver()).moveToElement(ClickOk).perform();
+            ClickOk.click();
+        }
+    }
+
+    public void clickSubmitButton() {
+        waitUntilVisible(webDriver(), SubmitButton);
+        SubmitButton.click();
+
+    }
+
 }
