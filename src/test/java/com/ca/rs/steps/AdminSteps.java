@@ -110,4 +110,49 @@ public class AdminSteps extends AbstractSeleniumSteps {
     public void iClickOnLoginButton() throws Throwable {
         adminPage.clickOnLoginButton();
     }
+
+
+
+
+    @And("^I click on ok button$")
+    public void iClickOnOkButton() throws Throwable {
+
+        adminPage.clickOk();
+    }
+
+    @And("^I click on Examiner type Remote Assessor$")
+    public void iClickOnExaminerTypeRemoteAssessor() throws Throwable {
+
+    }
+
+    @And("^I Select a video Recording$")
+    public void iSelectAVideoRecording() throws Throwable {
+
+    }
+
+    @And("^I click play button$")
+    public void iClickPlayButton() throws Throwable {
+
+    }
+
+    @And("^I click on Play button for video Recording$")
+    public void iClickOnPlayButtonForVideoRecording() throws Throwable {
+
+    }
+
+
+    @And("^I select candidate one marks as \"([^\"]*)\"$")
+    public void iSelectCandidateOneMarksAs(String marks) throws Throwable {
+        adminPage.selectCandidateOneMarks(marks);
+    }
+
+    @And("^I select candidate two marks as \"([^\"]*)\"$")
+    public void iSelectCandidateTwoMarksAs(String marks) throws Throwable {
+        adminPage.selectCandidateTwoMarks(marks);
+    }
+
+    @And("^I click on SUBMIT Button$")
+    public void iClickOnSUBMITButton() throws Throwable {
+        adminPage.clickSubmitButton();
+    }
 }

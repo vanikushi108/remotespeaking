@@ -23,4 +23,15 @@ Feature: Interlocutor test
     And I click on Proceed button
     And I sleep for 3 seconds
     And I click on Record button
-    And I sleep for 60 seconds
+    And I sleep for 1 minutes
+    And I click on Record button
+    And I sleep for 4 seconds
+    And I click on ok button
+    And I sleep for 4 seconds
+    And I select candidate one marks as "3.5"
+    And I sleep for 4 seconds
+    And I select candidate two marks as "3.5"
+    And I sleep for 4 seconds
+#    And I click on SUBMIT Button
+
+
