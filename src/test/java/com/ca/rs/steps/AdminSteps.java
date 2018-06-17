@@ -111,12 +111,8 @@ public class AdminSteps extends AbstractSeleniumSteps {
         adminPage.clickOnLoginButton();
     }
 
-
-
-
     @And("^I click on ok button$")
     public void iClickOnOkButton() throws Throwable {
-
         adminPage.clickOk();
     }
 
@@ -140,19 +136,28 @@ public class AdminSteps extends AbstractSeleniumSteps {
 
     }
 
-
-    @And("^I select candidate one marks as \"([^\"]*)\"$")
-    public void iSelectCandidateOneMarksAs(String marks) throws Throwable {
-        adminPage.selectCandidateOneMarks(marks);
+    @And("^I select candidate one marks$")
+    public void iSelectCandidateOneMarksAs() throws Throwable {
+        adminPage.selectCandidateOneMarks();
     }
 
-    @And("^I select candidate two marks as \"([^\"]*)\"$")
-    public void iSelectCandidateTwoMarksAs(String marks) throws Throwable {
-        adminPage.selectCandidateTwoMarks(marks);
+    @And("^I select candidate two marks$")
+    public void iSelectCandidateTwoMarksAs() throws Throwable {
+        adminPage.selectCandidateTwoMarks();
     }
 
-    @And("^I click on SUBMIT Button$")
-    public void iClickOnSUBMITButton() throws Throwable {
+    @And("^I click on Submit Button$")
+    public void iClickOnSubmitButton() throws Throwable {
         adminPage.clickSubmitButton();
+    }
+
+    @And("^I click on Confirm Yes Submit Button$")
+    public void iClickOnConfirmYesSubmitButton() throws Throwable {
+        adminPage.clickConfirmYesSubmitButton();
+    }
+
+    @And("^I select \"([^\"]*)\" from drop down$")
+    public void iSelectFromDropDown(String marks) throws Throwable {
+        adminPage.selectValueFromDropdown(marks);
     }
 }

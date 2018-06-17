@@ -63,21 +63,26 @@ public class AdminPage extends AbstractSeleniumSteps {
     @FindBy(css = ".auth0-lock-submit")
     private WebElement LoginButton;
 
-    @FindBy(css = ".mark-button:nth-child(1)")
+//    @FindBy(css = ".mark-button:nth-child(1)")
+//    private WebElement selectCanditate1;
+//
+//    @FindBy(css = ".mark-button:nth-child(2)")
+//    private WebElement selectCanditate2;
+
+    @FindBy(css = "button[data-candidate='1']")
     private WebElement selectCanditate1;
 
-//    @FindBy(css = "button[class=mark-button][data-candidate=1]")
-//    private WebElement selectCanditate1;
-
-    @FindBy(css = ".mark-button:nth-child(2)")
+    @FindBy(css = "button[data-candidate='2']")
     private WebElement selectCanditate2;
-
 
     @FindBy(css = "#confirm-yes")
     private WebElement ClickOk;
 
     @FindBy(css = "#button-submit")
     private WebElement SubmitButton;
+
+    @FindBy(css = "#confirm-yes")
+    private WebElement ConfirmYesSubmitButton;
 
 
     public void enterExaminerNo(int ExaminerNumber) throws Exception {
@@ -150,7 +155,7 @@ public class AdminPage extends AbstractSeleniumSteps {
         LoginButton.click();
     }
 
-    public void selectCandidateOneMarks(String marks) throws Exception {
+    public void selectCandidateOneMarks() throws Exception {
 
         customWait(webDriver(), selectCanditate1);
         try {
@@ -161,7 +166,9 @@ public class AdminPage extends AbstractSeleniumSteps {
             new Actions(webDriver()).moveToElement(selectCanditate1).perform();
             selectCanditate1.click();
         }
+    }
 
+    public void selectValueFromDropdown(String marks) throws Exception {
         By locator = By.cssSelector("ul>li:nth-child(4)");
 
         WebElement element = webDriver().findElement(locator);
@@ -177,7 +184,7 @@ public class AdminPage extends AbstractSeleniumSteps {
         Thread.sleep(1000);
     }
 
-    public void selectCandidateTwoMarks(String marks) throws Exception {
+    public void selectCandidateTwoMarks() throws Exception {
 
         customWait(webDriver(), selectCanditate2);
         try {
@@ -188,21 +195,6 @@ public class AdminPage extends AbstractSeleniumSteps {
             new Actions(webDriver()).moveToElement(selectCanditate2).perform();
             selectCanditate2.click();
         }
-
-        Thread.sleep(1000);
-        By locator = By.cssSelector("ul>li:nth-child(4)");
-
-        WebElement element = webDriver().findElement(locator);
-
-        try {
-            Thread.sleep(1000);
-            scrollIntoView(webDriver(), element);
-            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", element);
-        } catch (Exception ex) {
-            new Actions(webDriver()).moveToElement(element).perform();
-            element.click();
-        }
-        Thread.sleep(1000);
     }
 
     public void clickOk() throws Exception {
@@ -219,7 +211,10 @@ public class AdminPage extends AbstractSeleniumSteps {
     public void clickSubmitButton() {
         waitUntilVisible(webDriver(), SubmitButton);
         SubmitButton.click();
-
     }
 
+    public void clickConfirmYesSubmitButton() {
+        waitUntilVisible(webDriver(), ConfirmYesSubmitButton);
+        ConfirmYesSubmitButton.click();
+    }
 }
