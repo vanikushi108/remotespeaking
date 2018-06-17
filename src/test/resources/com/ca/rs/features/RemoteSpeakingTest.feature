@@ -1,7 +1,8 @@
 @regression
-Feature: Interlocutor test
+Feature: Remote speaking
   As an user
-  I can do Interlocutor test
+  I need to do
+  Remote speaking tests
 
   Scenario: Interlocutor test
     Given User navigates to Remote Speaking Page
@@ -71,4 +72,4 @@ Feature: Interlocutor test
     And I select "2.0" from drop down
     And I click on Submit Button
     And I click on Confirm Yes Submit Button
-    And I sleep for 20 seconds
+    And I sleep for 2 seconds
