@@ -71,12 +71,12 @@ public class AdminSteps extends AbstractSeleniumSteps {
         adminPage.clickOnInterlocutor();
     }
 
-    @And("^I click on Examiner type RemoteAssessor$")
+    @And("^I click on Examiner type Remote Assessor$")
     public void iClickOnRemoteAssessor() throws Throwable {
         adminPage.clickOnRemoteAssessor();
     }
 
-    @And("^I click on Examiner type InRoomAssessor$")
+    @And("^I click on Examiner type InRoom Assessor$")
     public void iClickOnInRoomAssessor() throws Throwable {
         adminPage.clickOnInRoomAssessor();
     }
@@ -116,11 +116,6 @@ public class AdminSteps extends AbstractSeleniumSteps {
         adminPage.clickOk();
     }
 
-    @And("^I click on Examiner type Remote Assessor$")
-    public void iClickOnExaminerTypeRemoteAssessor() throws Throwable {
-
-    }
-
     @And("^I Select a video Recording$")
     public void iSelectAVideoRecording() throws Throwable {
 
@@ -128,12 +123,12 @@ public class AdminSteps extends AbstractSeleniumSteps {
 
     @And("^I click play button$")
     public void iClickPlayButton() throws Throwable {
-
+        adminPage.clickOnPlayButton();
     }
 
     @And("^I click on Play button for video Recording$")
     public void iClickOnPlayButtonForVideoRecording() throws Throwable {
-
+        adminPage.clickOnPlayButtonForRecording();
     }
 
     @And("^I select candidate one marks$")
@@ -158,6 +153,36 @@ public class AdminSteps extends AbstractSeleniumSteps {
 
     @And("^I select \"([^\"]*)\" from drop down$")
     public void iSelectFromDropDown(String marks) throws Throwable {
-        adminPage.selectValueFromDropdown(marks);
+        adminPage.selectDataValueFromMarkDropdown(marks);
+    }
+
+    @And("^I select candidate one Grammar and Vocabulary$")
+    public void iSelectCandidateOneGrammarAndVocabulary() throws Throwable {
+        adminPage.selectCandidateOneGrammerAndVocabulary();
+    }
+
+    @And("^I select candidate one Pronunciation$")
+    public void iSelectCandidateOnePronunciation() throws Throwable {
+        adminPage.selectCandidateOnePronunciation();
+    }
+
+    @And("^I select candidate one Interactive Communication$")
+    public void iSelectCandidateOneInteractiveCommunication() throws Throwable {
+        adminPage.selectCandidateOneInteractiveCommunication();
+    }
+
+    @And("^I select candidate two Grammar and Vocabulary$")
+    public void iSelectCandidateTwoGrammarAndVocabulary() throws Throwable {
+        adminPage.selectCandidateTwoGrammerAndVocabulary();
+    }
+
+    @And("^I select candidate two Pronunciation$")
+    public void iSelectCandidateTwoPronunciation() throws Throwable {
+        adminPage.selectCandidateTwoPronunciation();
+    }
+
+    @And("^I select candidate two Interactive Communication$")
+    public void iSelectCandidateTwoInteractiveCommunication() throws Throwable {
+        adminPage.selectCandidateTwoInteractiveCommunication();
     }
 }
