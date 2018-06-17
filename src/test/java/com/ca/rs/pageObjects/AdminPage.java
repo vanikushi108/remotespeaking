@@ -322,7 +322,7 @@ public class AdminPage extends AbstractSeleniumSteps {
 
     public void selectDataValueFromMarkDropdown(String marks) throws Exception {
         Thread.sleep(400);
-        By locator = By.cssSelector("li[role='menuitem'][data-mark-value='2.0']");
+        By locator = By.cssSelector("li[role='menuitem'][data-mark-value='" + marks + "']");
         WebElement element = webDriver().findElement(locator);
         try {
             scrollIntoView(webDriver(), element);
