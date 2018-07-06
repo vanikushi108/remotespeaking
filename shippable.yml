@@ -10,5 +10,7 @@ env:
 
 build:
  ci:
- - mkdir -p shippable/testresults/dev
- - shippable_retry mvn clean -Drun_type=saucelabs -DSAUCE_USERNAME=$SAUCE_USERNAME -DSAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY -Dcucumber.options="--tags @regression --format junit:shippable/testresults/cucumber-results.xml" -Denvironment.name=stable test
+ - mkdir -p shippable/testresults/Chrome
+ - shippable_retry mvn clean -Dbrowser=Chrome -Dbrowser_version=67.0 -Dos_version='Windows 10' -Drun_type=saucelabs -DSAUCE_USERNAME=$SAUCE_USERNAME -DSAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY -Dcucumber.options="--tags @regression --format junit:shippable/testresults/cucumber-results.xml" -Denvironment.name=stable test
+ - mkdir -p shippable/testresults/SamsungTab
+ - shippable_retry mvn clean -Dbrowser=Chrome -Ddevice='Samsung Galaxy Tab S3 GoogleAPI Emulator' -Drun_type=android -DSAUCE_USERNAME=$SAUCE_USERNAME -DSAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY -Dcucumber.options="--tags @regression --format junit:shippable/testresults/cucumber-results.xml" -Denvironment.name=stable test

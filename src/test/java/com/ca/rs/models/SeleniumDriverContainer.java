@@ -4,6 +4,7 @@ import com.google.common.base.Joiner;
 import com.google.common.util.concurrent.Monitor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriver;
@@ -20,6 +21,8 @@ import com.codeborne.selenide.WebDriverRunner;
 import javax.annotation.concurrent.GuardedBy;
 import java.io.File;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -31,11 +34,10 @@ public class SeleniumDriverContainer {
 
     private static final String DOWNLOAD_FOLDER_LOCATION = computeDownloadFolderLocation();
     private static final String BROWSER = System.getProperty("browser", "Chrome");
-//    private static final String SAUCE_USERNAME = System.getProperty("SAUCE_USERNAME");
-//    private static final String SAUCE_ACCESS_KEY = System.getProperty("SAUCE_ACCESS_KEY");
-    private static final String SAUCE_USERNAME = "BTS_Testing_Services";
-    private static final String SAUCE_ACCESS_KEY = "9c3e2abc-e9fb-4c27-9166-f5769a635c93";
-    private static final String BROWSER_VERSION = System.getProperty("browser_version", "65.0");
+    private static final String SAUCE_USERNAME = System.getProperty("SAUCE_USERNAME");
+    private static final String SAUCE_ACCESS_KEY = System.getProperty("SAUCE_ACCESS_KEY");
+    private static final String BROWSER_VERSION = System.getProperty("browser_version", "67.0");
+    private static final String DEVICE = System.getProperty("device", "Samsung Galaxy Tab S3 GoogleAPI Emulator");
     private static final String OS_VERSION = System.getProperty("os_version", "Windows 10");
     private static final String RUN_TYPE = System.getProperty("run_type", "local");
     private static final DesiredCapabilities cap = new DesiredCapabilities();
@@ -154,9 +156,14 @@ public class SeleniumDriverContainer {
 
     private WebDriver createWebDriver() throws Exception {
         if (RUN_TYPE.equalsIgnoreCase("saucelabs")) {
+            return SauceLabsDriver();
+        }
+        if (RUN_TYPE.equalsIgnoreCase("android")) {
             return androidDriver();
-            //return SauceLabsDriver();
-        } else {
+        }
+        if (RUN_TYPE.equalsIgnoreCase("ios")) {
+            return iosDriver();
+        }else {
             switch (BROWSER) {
                 case "Chrome":
                     return createChromeDriver();
@@ -186,7 +193,7 @@ public class SeleniumDriverContainer {
         cap.setCapability("webdriverRemoteQuietExceptions", "false");
         cap.setCapability("username", SAUCE_USERNAME);
         cap.setCapability("accessKey", SAUCE_ACCESS_KEY);
-        cap.setCapability("name", "TYE - " + BROWSER + "-" +BROWSER_VERSION);
+        cap.setCapability("name", "Remote Speaking-" + BROWSER + "-" + BROWSER_VERSION);
 
         webDriver = new RemoteWebDriver(new URL("http://ondemand.saucelabs.com:80/wd/hub"), cap);
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -196,12 +203,17 @@ public class SeleniumDriverContainer {
     }
 
     private WebDriver androidDriver() throws Exception {
-        cap.setCapability("appiumVersion", "1.7.2");
-        cap.setCapability("deviceName","Samsung Galaxy Tab S3 GoogleAPI Emulator");
+        cap.setCapability("appiumVersion", "1.8.1");
+        cap.setCapability("deviceName", DEVICE);
         cap.setCapability("deviceOrientation", "portrait");
-        cap.setCapability("browserName", "Chrome");
+        cap.setCapability("browserName", BROWSER);
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("allow-file-access-from-files");
+        options.addArguments("use-fake-ui-for-media-stream");
+        options.addArguments("use-fake-device-for-media-stream");
+        cap.setCapability(ChromeOptions.CAPABILITY, options);
         cap.setCapability("platformVersion", "7.1");
-        cap.setCapability("platformName","Android");
+        cap.setCapability("platformName", "Android");
         cap.setCapability("passed", "true");
         cap.setCapability("idleTimeout", 600);
         cap.setCapability("recordVideo", "false");
@@ -210,9 +222,40 @@ public class SeleniumDriverContainer {
         cap.setCapability("webdriverRemoteQuietExceptions", "false");
         cap.setCapability("username", SAUCE_USERNAME);
         cap.setCapability("accessKey", SAUCE_ACCESS_KEY);
-        cap.setCapability("name", "Remote speaking - Samsung Galaxy Tab");
+        cap.setCapability("name", "Remote Speaking-" + DEVICE);
+
         webDriver = new RemoteWebDriver(new URL("http://ondemand.saucelabs.com:80/wd/hub"), cap) {};
         webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+        WebDriverRunner.setWebDriver(webDriver);
+        return webDriver;
+    }
+
+    private WebDriver iosDriver() throws Exception {
+        cap.setCapability("appiumVersion", "1.8.1");
+        cap.setCapability("deviceName", DEVICE);
+        cap.setCapability("deviceOrientation", "portrait");
+        cap.setCapability("browserName", BROWSER);
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("allow-file-access-from-files");
+        options.addArguments("use-fake-ui-for-media-stream");
+        options.addArguments("use-fake-device-for-media-stream");
+        cap.setCapability(ChromeOptions.CAPABILITY, options);
+        cap.setCapability("platformVersion", "11.3");
+        cap.setCapability("platformName", "iOS");
+        cap.setCapability("passed", "true");
+        cap.setCapability("idleTimeout", 600);
+        cap.setCapability("recordVideo", "false");
+        cap.setCapability("recordScreenshots", "false");
+        cap.setCapability("recordLogs", "false");
+        cap.setCapability("webdriverRemoteQuietExceptions", "false");
+        cap.setCapability("username", SAUCE_USERNAME);
+        cap.setCapability("accessKey", SAUCE_ACCESS_KEY);
+        cap.setCapability("name", "Remote Speaking-" + DEVICE);
+
+        webDriver = new RemoteWebDriver(new URL("http://ondemand.saucelabs.com:80/wd/hub"), cap) {};
+        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
         WebDriverRunner.setWebDriver(webDriver);
         return webDriver;
     }
