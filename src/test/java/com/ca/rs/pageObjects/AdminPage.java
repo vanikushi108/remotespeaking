@@ -36,7 +36,7 @@ public class AdminPage extends AbstractSeleniumSteps {
     @FindBy(css = "input")
     private WebElement ExaminerNo;
 
-    @FindBy(css = "button[type='button'] > span:nth-child(2)")
+    @FindBy(id ="button-next")
     private WebElement ProceedButton;
 
     @FindBy(css = "label[data-option='Interlocutor']")
@@ -50,6 +50,9 @@ public class AdminPage extends AbstractSeleniumSteps {
 
     @FindBy(css = "label[data-option='A2 Key']")
     private WebElement ExamTypeA2Key;
+
+    @FindBy(css = "#exam-type-dropdown")
+    private WebElement ExamTypeDropdown;
 
     @FindBy(css = "#videorecorder-ribbon >div >div >button")
     private WebElement RecordButton;
@@ -101,6 +104,9 @@ public class AdminPage extends AbstractSeleniumSteps {
 
     @FindBy(css = "button[data-candidate='2'][data-category='Interactive Communication']")
     private WebElement selectCandidateTwoInteractiveCommunication;
+
+    @FindBy(css="#test-material-input-2")
+    private WebElement selectCandidate1Testmaterial;
 
 
     public void enterExaminerNo(int ExaminerNumber) throws Exception {
@@ -154,6 +160,29 @@ public class AdminPage extends AbstractSeleniumSteps {
         } catch (Exception ex) {
             new Actions(webDriver()).moveToElement(ExamTypeA2Key).perform();
             ExamTypeA2Key.click();
+        }
+    }
+
+    public void clickOnExamTypeDropdown() throws Exception {
+        customWait(webDriver(), ExamTypeDropdown);
+        try {
+            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", ExamTypeDropdown);
+        } catch (Exception ex) {
+            new Actions(webDriver()).moveToElement(ExamTypeDropdown).perform();
+            ExamTypeDropdown.click();
+        }
+    }
+
+    public void selectExamType(String examType) throws Exception {
+        Thread.sleep(500);
+        By locator = By.cssSelector("li[data-exam-type='" + examType + "']");
+        WebElement element = webDriver().findElement(locator);
+        customWait(webDriver(), element);
+        try {
+            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", element);
+        } catch (Exception ex) {
+            new Actions(webDriver()).moveToElement(element).perform();
+            element.click();
         }
     }
 
@@ -332,5 +361,10 @@ public class AdminPage extends AbstractSeleniumSteps {
             element.click();
         }
         Thread.sleep(400);
+    }
+
+    public void selectPart2TestMaterial(int materialnum){
+        waitUntilVisible(webDriver(), selectCandidate1Testmaterial);
+        selectCandidate1Testmaterial.sendKeys(Integer.toString(materialnum));
     }
 }

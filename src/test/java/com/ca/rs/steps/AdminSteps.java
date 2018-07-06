@@ -185,4 +185,30 @@ public class AdminSteps extends AbstractSeleniumSteps {
     public void iSelectCandidateTwoInteractiveCommunication() throws Throwable {
         adminPage.selectCandidateTwoInteractiveCommunication();
     }
+
+    @And("^I enter Candidate(\\d+) name as \"([^\"]*)\"$")
+    public void iEnterCandidateNameAs(int arg0, String arg1) throws Throwable {
+
+    }
+
+    @And("^I select part(\\d+) test material as \"([^\"]*)\"$")
+    public void iSelectPartTestMaterialAs(int materialNum) throws Throwable {
+        adminPage.selectPart2TestMaterial(materialNum);
+    }
+
+    @And("^I click on test type dropdown$")
+    public void iClickOnTestTypeDropdown() throws Throwable {
+        adminPage.clickOnExamTypeDropdown();
+    }
+
+    @And("^I select test type as \"([^\"]*)\"$")
+    public void iSelectTestTypeAs(String examType) throws Throwable {
+        adminPage.selectExamType(examType);
+    }
+
+
+    @And("^I select part(\\d+) inputBox(\\d+) test material as \"([^\"]*)\"$")
+    public void iSelectPartInputBoxTestMaterialAs(int arg0, int arg1, String arg2) throws Throwable {
+
+    }
 }

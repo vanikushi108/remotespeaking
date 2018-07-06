@@ -1,4 +1,4 @@
-@regression
+
 Feature: In Room Assessor
   As an user
   I can play back videos and mark video
