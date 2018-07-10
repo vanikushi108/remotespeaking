@@ -186,11 +186,6 @@ public class AdminSteps extends AbstractSeleniumSteps {
         adminPage.selectCandidateTwoInteractiveCommunication();
     }
 
-    @And("^I enter Candidate(\\d+) name as \"([^\"]*)\"$")
-    public void iEnterCandidateNameAs(int arg0, String arg1) throws Throwable {
-
-    }
-
     @And("^I select part(\\d+) test material as \"([^\"]*)\"$")
     public void iSelectPartTestMaterialAs(int materialNum) throws Throwable {
         adminPage.selectPart2TestMaterial(materialNum);
@@ -206,9 +201,43 @@ public class AdminSteps extends AbstractSeleniumSteps {
         adminPage.selectExamType(examType);
     }
 
+    @And("^I enter Candidate one name as \"([^\"]*)\"$")
+    public void iEnterCandidateOneNameAs(String name) throws Throwable {
+        adminPage.enterCandidate1Name(name);
+    }
 
-    @And("^I select part(\\d+) inputBox(\\d+) test material as \"([^\"]*)\"$")
-    public void iSelectPartInputBoxTestMaterialAs(int arg0, int arg1, String arg2) throws Throwable {
+    @And("^I enter candidate Two name as \"([^\"]*)\"$")
+    public void iEnterCandidateTwoNameAs(String name) throws Throwable {
+        adminPage.enterCandidate2Name(name);
+    }
 
+    @And("^I enter candidate One number as \"([^\"]*)\"$")
+    public void iEnterCandidateOneNumberAs(String num) throws Throwable {
+        adminPage.enterCandidate1Number(num);
+    }
+
+    @And("^I enter candidate Two number as \"([^\"]*)\"$")
+    public void iEnterCandidateTwoNumberAs(String num) throws Throwable {
+        adminPage.enterCandidate2Number(num);
+    }
+
+    @And("^I select partTwo inputBox test material as \"([^\"]*)\"$")
+    public void iSelectPartTwoInputBoxTestMaterialAs(String num) throws Throwable {
+        adminPage.enterPart2InputBox1Material(num);
+    }
+
+    @And("^I select partTwo inputBoxTwo test material as \"([^\"]*)\"$")
+    public void iSelectPartTwoInputBoxTwoTestMaterialAs(String num) throws Throwable {
+        adminPage.enterPart2InputBox2Material(num);
+    }
+
+    @And("^I select partThree inputBoxOne test material as \"([^\"]*)\"$")
+    public void iSelectPartthreeInputBoxoneTestMaterialAs(String num) throws Throwable {
+        adminPage.enterPart3InputBox1Material(num);
+    }
+
+    @And("^I select partThree inputBoxTwo test material as \"([^\"]*)\"$")
+    public void iSelectPartThreeInputBoxTwoTestMaterialAs(String num) throws Throwable {
+        adminPage.enterPart3InputBox2Material(num);
     }
 }

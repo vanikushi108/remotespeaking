@@ -3,6 +3,7 @@ package com.ca.rs.pageObjects;
 import com.ca.rs.models.SeleniumDriverContainer;
 import com.ca.rs.steps.AbstractSeleniumSteps;
 import io.appium.java_client.MobileBy;
+import jdk.nashorn.internal.runtime.regexp.joni.ast.EncloseNode;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -36,7 +37,7 @@ public class AdminPage extends AbstractSeleniumSteps {
     @FindBy(css = "input")
     private WebElement ExaminerNo;
 
-    @FindBy(id ="button-next")
+    @FindBy(id = "button-next")
     private WebElement ProceedButton;
 
     @FindBy(css = "label[data-option='Interlocutor']")
@@ -67,10 +68,10 @@ public class AdminPage extends AbstractSeleniumSteps {
     private WebElement LoginButton;
 
     @FindBy(css = "button[data-candidate='1']")
-    private WebElement selectCandidate1;
+    private WebElement SelectCandidate1;
 
     @FindBy(css = "button[data-candidate='2']")
-    private WebElement selectCandidate2;
+    private WebElement SelectCandidate2;
 
     @FindBy(css = "#confirm-yes")
     private WebElement ClickOk;
@@ -88,25 +89,49 @@ public class AdminPage extends AbstractSeleniumSteps {
     private WebElement PlayButtonRecording;
 
     @FindBy(css = "button[data-candidate='1'][data-category='Grammar & Vocabulary']")
-    private WebElement selectCandidateOneGrammerAndVocabulary;
+    private WebElement SelectCandidateOneGrammerAndVocabulary;
 
     @FindBy(css = "button[data-candidate='1'][data-category='Pronunciation']")
-    private WebElement selectCandidateOnePronunciation;
+    private WebElement SelectCandidateOnePronunciation;
 
     @FindBy(css = "button[data-candidate='1'][data-category='Interactive Communication']")
-    private WebElement selectCandidateOneInteractiveCommunication;
+    private WebElement SelectCandidateOneInteractiveCommunication;
 
     @FindBy(css = "button[data-candidate='2'][data-category='Grammar & Vocabulary']")
-    private WebElement selectCandidateTwoGrammerAndVocabulary;
+    private WebElement SelectCandidateTwoGrammerAndVocabulary;
 
     @FindBy(css = "button[data-candidate='2'][data-category='Pronunciation']")
-    private WebElement selectCandidateTwoPronunciation;
+    private WebElement SelectCandidateTwoPronunciation;
 
     @FindBy(css = "button[data-candidate='2'][data-category='Interactive Communication']")
-    private WebElement selectCandidateTwoInteractiveCommunication;
+    private WebElement SelectCandidateTwoInteractiveCommunication;
 
-    @FindBy(css="#test-material-input-2")
-    private WebElement selectCandidate1Testmaterial;
+    @FindBy(id = "candidate_1_name")
+    private WebElement EnterCandidate1Name;
+
+    @FindBy(id = "candidate_2_name")
+    private WebElement EnterCandidate2Name;
+
+    @FindBy(css = "test-material-input-2")
+    private WebElement SelectCandidate1TestMaterial;
+
+    @FindBy(id = "candidate_1_no")
+    private WebElement EnterCandidate1Number;
+
+    @FindBy(id = "candidate_2_no")
+    private WebElement EnterCandidate2Number;
+
+    @FindBy(id = "candidate_1_material_2")
+    private WebElement Part2InputBox1;
+
+    @FindBy(id = "candidate_2_material_2")
+    private WebElement Part2InputBox2;
+
+    @FindBy(id = "candidate_1_material_3")
+    private WebElement Part3InputBox1;
+
+    @FindBy(id = "candidate_2_material_3")
+    private WebElement part3InputBox2;
 
 
     public void enterExaminerNo(int ExaminerNumber) throws Exception {
@@ -212,13 +237,13 @@ public class AdminPage extends AbstractSeleniumSteps {
 
     public void selectCandidateOneMarks() throws Exception {
 
-        customWait(webDriver(), selectCandidate1);
+        customWait(webDriver(), SelectCandidate1);
         try {
-            scrollIntoView(webDriver(), selectCandidate1);
-            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", selectCandidate1);
+            scrollIntoView(webDriver(), SelectCandidate1);
+            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", SelectCandidate1);
         } catch (Exception ex) {
-            new Actions(webDriver()).moveToElement(selectCandidate1).perform();
-            selectCandidate1.click();
+            new Actions(webDriver()).moveToElement(SelectCandidate1).perform();
+            SelectCandidate1.click();
         }
     }
 
@@ -236,19 +261,18 @@ public class AdminPage extends AbstractSeleniumSteps {
 
     public void selectCandidateTwoMarks() throws Exception {
 
-        customWait(webDriver(), selectCandidate2);
+        customWait(webDriver(), SelectCandidate2);
         try {
-            scrollIntoView(webDriver(), selectCandidate2);
-            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", selectCandidate2);
+            scrollIntoView(webDriver(), SelectCandidate2);
+            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", SelectCandidate2);
         } catch (Exception ex) {
-            new Actions(webDriver()).moveToElement(selectCandidate2).perform();
-            selectCandidate2.click();
+            new Actions(webDriver()).moveToElement(SelectCandidate2).perform();
+            SelectCandidate2.click();
         }
     }
 
     public void clickOk() throws Exception {
         try {
-            //webDriver().switchTo().alert().accept();
             ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", ClickOk);
         } catch (Exception ex) {
             new Actions(webDriver()).moveToElement(ClickOk).perform();
@@ -279,79 +303,81 @@ public class AdminPage extends AbstractSeleniumSteps {
 
     public void selectCandidateOneGrammerAndVocabulary() throws Exception {
 
-        customWait(webDriver(), selectCandidateOneGrammerAndVocabulary);
+        customWait(webDriver(), SelectCandidateOneGrammerAndVocabulary);
         try {
-            scrollIntoView(webDriver(), selectCandidateOneGrammerAndVocabulary);
-            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", selectCandidateOneGrammerAndVocabulary);
+            scrollIntoView(webDriver(), SelectCandidateOneGrammerAndVocabulary);
+            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", SelectCandidateOneGrammerAndVocabulary);
         } catch (Exception ex) {
-            new Actions(webDriver()).moveToElement(selectCandidateOneGrammerAndVocabulary).perform();
-            selectCandidateOneGrammerAndVocabulary.click();
+            new Actions(webDriver()).moveToElement(SelectCandidateOneGrammerAndVocabulary).perform();
+            SelectCandidateOneGrammerAndVocabulary.click();
         }
     }
 
     public void selectCandidateOnePronunciation() throws Exception {
 
-        customWait(webDriver(), selectCandidateOnePronunciation);
+        customWait(webDriver(), SelectCandidateOnePronunciation);
         try {
-            scrollIntoView(webDriver(), selectCandidateOnePronunciation);
-            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", selectCandidateOnePronunciation);
+            scrollIntoView(webDriver(), SelectCandidateOnePronunciation);
+            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", SelectCandidateOnePronunciation);
         } catch (Exception ex) {
-            new Actions(webDriver()).moveToElement(selectCandidateOnePronunciation).perform();
-            selectCandidateOnePronunciation.click();
+            new Actions(webDriver()).moveToElement(SelectCandidateOnePronunciation).perform();
+            SelectCandidateOnePronunciation.click();
         }
     }
 
     public void selectCandidateOneInteractiveCommunication() throws Exception {
 
-        customWait(webDriver(), selectCandidateOneInteractiveCommunication);
+        customWait(webDriver(), SelectCandidateOneInteractiveCommunication);
         try {
-            scrollIntoView(webDriver(), selectCandidateOneInteractiveCommunication);
-            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", selectCandidateOneInteractiveCommunication);
+            scrollIntoView(webDriver(), SelectCandidateOneInteractiveCommunication);
+            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", SelectCandidateOneInteractiveCommunication);
         } catch (Exception ex) {
-            new Actions(webDriver()).moveToElement(selectCandidateOneInteractiveCommunication).perform();
-            selectCandidateOneInteractiveCommunication.click();
+            new Actions(webDriver()).moveToElement(SelectCandidateOneInteractiveCommunication).perform();
+            SelectCandidateOneInteractiveCommunication.click();
         }
     }
 
     public void selectCandidateTwoGrammerAndVocabulary() throws Exception {
 
-        customWait(webDriver(), selectCandidateTwoGrammerAndVocabulary);
+        customWait(webDriver(), SelectCandidateTwoGrammerAndVocabulary);
         try {
-            scrollIntoView(webDriver(), selectCandidateTwoGrammerAndVocabulary);
-            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", selectCandidateTwoGrammerAndVocabulary);
+            scrollIntoView(webDriver(), SelectCandidateTwoGrammerAndVocabulary);
+            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", SelectCandidateTwoGrammerAndVocabulary);
         } catch (Exception ex) {
-            new Actions(webDriver()).moveToElement(selectCandidateTwoGrammerAndVocabulary).perform();
-            selectCandidateTwoGrammerAndVocabulary.click();
+            new Actions(webDriver()).moveToElement(SelectCandidateTwoGrammerAndVocabulary).perform();
+            SelectCandidateTwoGrammerAndVocabulary.click();
         }
     }
 
     public void selectCandidateTwoPronunciation() throws Exception {
 
-        customWait(webDriver(), selectCandidateTwoPronunciation);
+        customWait(webDriver(), SelectCandidateTwoPronunciation);
         try {
-            scrollIntoView(webDriver(), selectCandidateTwoPronunciation);
-            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", selectCandidateTwoPronunciation);
+            scrollIntoView(webDriver(), SelectCandidateTwoPronunciation);
+            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", SelectCandidateTwoPronunciation);
         } catch (Exception ex) {
-            new Actions(webDriver()).moveToElement(selectCandidateTwoPronunciation).perform();
-            selectCandidateTwoPronunciation.click();
+            new Actions(webDriver()).moveToElement(SelectCandidateTwoPronunciation).perform();
+            SelectCandidateTwoPronunciation.click();
         }
     }
 
     public void selectCandidateTwoInteractiveCommunication() throws Exception {
 
-        customWait(webDriver(), selectCandidateTwoInteractiveCommunication);
+        customWait(webDriver(), SelectCandidateTwoInteractiveCommunication);
         try {
-            scrollIntoView(webDriver(), selectCandidateTwoInteractiveCommunication);
-            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", selectCandidateTwoInteractiveCommunication);
+            scrollIntoView(webDriver(), SelectCandidateTwoInteractiveCommunication);
+            ((JavascriptExecutor) webDriver()).executeScript("arguments[0].click();", SelectCandidateTwoInteractiveCommunication);
         } catch (Exception ex) {
-            new Actions(webDriver()).moveToElement(selectCandidateTwoInteractiveCommunication).perform();
-            selectCandidateTwoInteractiveCommunication.click();
+            new Actions(webDriver()).moveToElement(SelectCandidateTwoInteractiveCommunication).perform();
+            SelectCandidateTwoInteractiveCommunication.click();
         }
     }
 
     public void selectDataValueFromMarkDropdown(String marks) throws Exception {
         Thread.sleep(400);
         By locator = By.cssSelector("li[role='menuitem'][data-mark-value='" + marks + "']");
+        //By locator = By.cssSelector("ul[role='menu'] > li::nth-of-type(2)");
+        //By locator = By.cssSelector("ul[role='menu'] > li::nth-child(2)");
         WebElement element = webDriver().findElement(locator);
         try {
             scrollIntoView(webDriver(), element);
@@ -363,8 +389,56 @@ public class AdminPage extends AbstractSeleniumSteps {
         Thread.sleep(400);
     }
 
-    public void selectPart2TestMaterial(int materialnum){
-        waitUntilVisible(webDriver(), selectCandidate1Testmaterial);
-        selectCandidate1Testmaterial.sendKeys(Integer.toString(materialnum));
+    public void selectPart2TestMaterial(int materialnum) {
+        waitUntilVisible(webDriver(), SelectCandidate1TestMaterial);
+        SelectCandidate1TestMaterial.sendKeys(Integer.toString(materialnum));
+    }
+
+    public void enterCandidate1Name(String name) throws InterruptedException {
+        Thread.sleep(400);
+        EnterCandidate1Name.click();
+        EnterCandidate1Name.sendKeys(name);
+    }
+
+    public void enterCandidate2Name(String name) throws InterruptedException {
+        Thread.sleep(400);
+        EnterCandidate2Name.click();
+        EnterCandidate2Name.sendKeys(name);
+    }
+
+    public void enterCandidate1Number(String num) throws InterruptedException {
+        Thread.sleep(400);
+        EnterCandidate1Number.click();
+        EnterCandidate1Number.sendKeys(num);
+    }
+
+    public void enterCandidate2Number(String num) throws InterruptedException {
+        Thread.sleep(400);
+        EnterCandidate2Number.click();
+        EnterCandidate2Number.sendKeys(num);
+    }
+
+    public void enterPart2InputBox1Material(String num) throws InterruptedException {
+        Thread.sleep(400);
+        Part2InputBox1.click();
+        Part2InputBox1.sendKeys(num);
+    }
+
+    public void enterPart2InputBox2Material(String num) throws InterruptedException {
+        Thread.sleep(400);
+        Part2InputBox2.click();
+        Part2InputBox2.sendKeys(num);
+    }
+
+    public void enterPart3InputBox1Material(String num) throws InterruptedException {
+        Thread.sleep(400);
+        Part3InputBox1.click();
+        Part3InputBox1.sendKeys(num);
+    }
+
+    public void enterPart3InputBox2Material(String num) throws InterruptedException {
+        Thread.sleep(400);
+        part3InputBox2.click();
+        part3InputBox2.sendKeys(num);
     }
 }
