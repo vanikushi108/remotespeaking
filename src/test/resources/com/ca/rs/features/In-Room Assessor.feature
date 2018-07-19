@@ -13,6 +13,9 @@ Feature: In Room Assessor
     And I enter Examiner No as 108
     And I sleep for 1 seconds
     And I click on Proceed button
+    And I Enter Center as "CA111"
+    And I sleep for 1 seconds
+    And I click on Proceed button
     And I click on Examiner type InRoom Assessor
     And I sleep for 1 seconds
     And I click on Proceed button

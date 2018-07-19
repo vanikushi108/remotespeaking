@@ -240,4 +240,11 @@ public class AdminSteps extends AbstractSeleniumSteps {
     public void iSelectPartThreeInputBoxTwoTestMaterialAs(String num) throws Throwable {
         adminPage.enterPart3InputBox2Material(num);
     }
+
+
+    @And("^I Enter Center as \"([^\"]*)\"$")
+    public void iEnterCenterAsCA(String centerNo) throws Throwable {
+        adminPage.enterCenterNumber(centerNo);
+
+    }
 }
