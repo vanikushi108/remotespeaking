@@ -4,14 +4,17 @@ Feature: Remote speaking
   I need to do
   Remote speaking tests
 
-  Scenario: Interlocutor test
+  Scenario: Interlocutor A2 Key test
     Given User navigates to Remote Speaking Page
     And I sleep for 1 seconds
     And I enter user name as "kasala.v@cambridgeenglish.org"
     And I enter password as "Remotespeaking1"
     And I click on Login button
-    And I sleep for 2 seconds
+    And I sleep for 3 seconds
     And I enter Examiner No as 108
+    And I sleep for 1 seconds
+    And I click on Proceed button
+    And I Enter Center as "CA111"
     And I sleep for 1 seconds
     And I click on Proceed button
     And I click on Examiner type Interlocutor
@@ -46,18 +49,22 @@ Feature: Remote speaking
     And I select "2.0" from drop down
     And I select candidate two marks
     And I select "2.0" from drop down
+    And I sleep for 1 seconds
     And I click on Submit Button
     And I click on Confirm Yes Submit Button
 
   Scenario: Remote Assessor
     Given User navigates to Remote Speaking Page
-    And I sleep for 1 seconds
+    And I sleep for 2 seconds
     And I enter user name as "kasala.v@cambridgeenglish.org"
     And I enter password as "Remotespeaking1"
     And I click on Login button
-    And I sleep for 1 seconds
+    And I sleep for 3 seconds
     And I enter Examiner No as 108
     And I sleep for 1 seconds
+    And I click on Proceed button
+    And I sleep for 1 seconds
+    And I Enter Center as "CA111"
     And I click on Proceed button
     And I sleep for 1 seconds
     And I click on Examiner type Remote Assessor

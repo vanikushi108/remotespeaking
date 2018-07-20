@@ -133,6 +133,9 @@ public class AdminPage extends AbstractSeleniumSteps {
     @FindBy(id = "candidate_2_material_3")
     private WebElement part3InputBox2;
 
+    @FindBy(id = "center-number-input")
+    private WebElement CenterNumber;
+
 
     public void enterExaminerNo(int ExaminerNumber) throws Exception {
         waitUntilVisible(webDriver(), ExaminerNo);
@@ -441,4 +444,11 @@ public class AdminPage extends AbstractSeleniumSteps {
         part3InputBox2.click();
         part3InputBox2.sendKeys(num);
     }
+
+    public void enterCenterNumber(String centerNo) throws Exception {
+        waitUntilVisible(webDriver(), CenterNumber);
+        CenterNumber.click();
+        CenterNumber.sendKeys(centerNo);
+    }
+
 }
