@@ -8,7 +8,7 @@ Feature: Remote speaking
     Given User navigates to Remote Speaking Page
     And I sleep for 1 seconds
     And I enter user name as "kasala.v@cambridgeenglish.org"
-    And I enter password as "Remotespeaking1"
+    And I enter password as "Vanitha123"
     And I click on Login button
     And I sleep for 3 seconds
     And I enter Examiner No as 108
@@ -38,9 +38,9 @@ Feature: Remote speaking
     And I select partThree inputBoxTwo test material as "5"
     And I sleep for 1 seconds
     And I click on Proceed button
-    And I sleep for 5 seconds
+    And I sleep for 1 seconds
     And I click on Record button
-    And I sleep for 10 seconds
+    And I sleep for 1 seconds
     And I click on Record button
     And I sleep for 3 seconds
     And I click on ok button
@@ -57,9 +57,9 @@ Feature: Remote speaking
     Given User navigates to Remote Speaking Page
     And I sleep for 2 seconds
     And I enter user name as "kasala.v@cambridgeenglish.org"
-    And I enter password as "Remotespeaking1"
+    And I enter password as "Vanitha123"
     And I click on Login button
-    And I sleep for 3 seconds
+    And I sleep for 60 seconds
     And I enter Examiner No as 108
     And I sleep for 1 seconds
     And I click on Proceed button
@@ -74,9 +74,9 @@ Feature: Remote speaking
     And I click on Proceed button
     And I sleep for 1 seconds
     And I click play button
-    And I sleep for 1 seconds
-    And I click on Play button for video Recording
     And I sleep for 10 seconds
+    And I click on Play back button for video
+    And I sleep for 20 seconds
     And I select candidate one Grammar and Vocabulary
     And I select "2.0" from drop down
     And I sleep for 1 seconds

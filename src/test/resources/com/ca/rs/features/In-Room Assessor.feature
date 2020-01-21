@@ -7,7 +7,7 @@ Feature: In Room Assessor
     Given User navigates to Remote Speaking Page
     And I sleep for 1 seconds
     And I enter user name as "kasala.v@cambridgeenglish.org"
-    And I enter password as "Remotespeaking1"
+    And I enter password as "Vanitha123"
     And I click on Login button
     And I sleep for 1 seconds
     And I enter Examiner No as 108

@@ -131,6 +131,11 @@ public class AdminSteps extends AbstractSeleniumSteps {
         adminPage.clickOnPlayButtonForRecording();
     }
 
+    @And("^I click on Play back button for video$")
+    public void iClickOnPlayBackButtonForVideo() throws Throwable {
+        adminPage.clickOnPlayBackButtonForVedio();
+    }
+
     @And("^I select candidate one marks$")
     public void iSelectCandidateOneMarksAs() throws Throwable {
         adminPage.selectCandidateOneMarks();
@@ -247,4 +252,6 @@ public class AdminSteps extends AbstractSeleniumSteps {
         adminPage.enterCenterNumber(centerNo);
 
     }
+
+
 }

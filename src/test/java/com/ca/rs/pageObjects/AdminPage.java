@@ -82,11 +82,14 @@ public class AdminPage extends AbstractSeleniumSteps {
     @FindBy(css = "#confirm-yes")
     private WebElement ConfirmYesSubmitButton;
 
-    @FindBy(linkText = "PLAY")
+    @FindBy(css = "#root > div > div > div > form > div > div > div > div > div:nth-child(1) > div > div > button.play-button")
     private WebElement PlayButton;
 
     @FindBy(css = "#player-play-toggle")
     private WebElement PlayButtonRecording;
+
+    @FindBy(css = "#player-play-toggle")
+    private WebElement PlayBackButtonVedio;
 
     @FindBy(css = "button[data-candidate='1'][data-category='Grammar & Vocabulary']")
     private WebElement SelectCandidateOneGrammerAndVocabulary;
@@ -293,7 +296,7 @@ public class AdminPage extends AbstractSeleniumSteps {
         ConfirmYesSubmitButton.click();
     }
 
-    public void clickOnPlayButton() {
+    public void mclickOnPlayButton() {
         waitUntilVisible(webDriver(), PlayButton);
         PlayButton.click();
     }
@@ -302,6 +305,16 @@ public class AdminPage extends AbstractSeleniumSteps {
         waitUntilVisible(webDriver(), PlayButtonRecording);
         PlayButtonRecording.click();
         webDriver().manage().window().maximize();
+    }
+
+    public void clickOnPlayBackButtonForVedio() {
+        waitUntilVisible(webDriver(), PlayBackButtonVedio);
+        PlayBackButtonVedio.click();
+    }
+
+    public void clickOnPlayButton() {
+        waitUntilVisible(webDriver(), PlayButton);
+        PlayButton.click();
     }
 
     public void selectCandidateOneGrammerAndVocabulary() throws Exception {
