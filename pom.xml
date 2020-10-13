@@ -11,7 +11,7 @@
         <cucumber-jvm.version>1.2.5</cucumber-jvm.version>
         <selenium.version>3.11.0</selenium.version>
         <sureFireVersion>2.19.1</sureFireVersion>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <docker.maven.plugin.version>0.4.13</docker.maven.plugin.version>
         <docker.image.prefix>remoteSpeaking</docker.image.prefix>
         <docker.url>src/main/docker</docker.url>
