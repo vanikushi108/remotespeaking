@@ -15,7 +15,7 @@
         <docker.maven.plugin.version>0.4.13</docker.maven.plugin.version>
         <docker.image.prefix>remoteSpeaking</docker.image.prefix>
         <docker.url>src/main/docker</docker.url>
-        <spring.version>4.3.0.RELEASE</spring.version>
+        <spring.version>5.3.18</spring.version>
         <commons.lang.version>3.5</commons.lang.version>
         <source.version>1.8</source.version>
         <target.version>1.8</target.version>
